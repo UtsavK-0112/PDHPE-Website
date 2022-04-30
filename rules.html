@@ -48,51 +48,15 @@
     <main>
         
         <a href="index.html" class="back-button">Back</a>
+        <div id="google_translate_element"></div>
+        <script src="script.js"></script>
+        <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+        <br>
         <p>Translate speech to help communicate and understand speech!</p>
         <br>
         <hr>
         <br>
-        <div id="google_translate_element"></div>
-        <script src="script.js"></script>
-        <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
-        <br><br>
-        <h2>Speech to Text</h2><br>
-        <p>Click on the below button and speak something...</p><br>
-        <p><button class="back-button" type="button" onclick="runSpeechRecognition()">Speech to Text</button> &nbsp; <span id="action"></span></p>
-        <div id="output" class="hide"></div>
-		<script>
-			/* JS comes here */
-		    function runSpeechRecognition() {
-		        // get output div reference
-		        var output = document.getElementById("output");
-		        // get action element reference
-		        var action = document.getElementById("action");
-                // new speech recognition object
-                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-                var recognition = new SpeechRecognition();
-            
-                // This runs when the speech recognition service starts
-                recognition.onstart = function() {
-                    action.innerHTML = "<small>listening, please speak...</small>";
-                };
-                
-                recognition.onspeechend = function() {
-                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
-                    recognition.stop();
-                }
-              
-                // This runs when the speech recognition service returns result
-                recognition.onresult = function(event) {
-                    var transcript = event.results[0][0].transcript;
-                    var confidence = event.results[0][0].confidence;
-                    output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
-                    output.classList.remove("hide");
-                };
-              
-                 // start recognition
-                 recognition.start();
-	        }
-		</script>
+        
         </main>
 </body>
 </html>
